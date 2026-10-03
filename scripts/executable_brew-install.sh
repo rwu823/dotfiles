@@ -15,4 +15,5 @@ brew install --cask \
     microsoft-edge  \
     kde-connect \
     bettertouchtool \
-    raycast
+    raycast \
+    snipaste

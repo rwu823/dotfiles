@@ -1,3 +1,14 @@
+autoload -Uz compinit
+
+# 每天只完整掃描一次補全目錄，其餘時間直接讀快取 (兼顧速度與穩定)
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m+1) ]]; then
+  compinit -d ${ZDOTDIR:-$HOME}/.zcompdump
+else
+  compinit -C -d ${ZDOTDIR:-$HOME}/.zcompdump
+fi
+
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,9 +28,88 @@ source "$HOME/.config/zi/setup.zsh"
 zi light zsh-users/zsh-autosuggestions
 zi light z-shell/F-Sy-H
 zi ice depth=1; zi light romkatv/powerlevel10k
-
+zi light Aloxaf/fzf-tab
+zi light Tarrasch/zsh-bd
 
 source <(fzf --zsh)
 
 alias z="source ~/.zshrc"
 alias g=git
+
+
+
+# ==============================================================================
+# Modern CLI Tool Aliases & Integrations
+# ==============================================================================
+
+# 1. eza (取代 ls)
+if command -v eza &> /dev/null; then
+  alias ls='eza --icons=auto'
+  alias l='eza -1 --icons=auto'                       # 單行簡潔清單
+  alias ll='eza -l --icons=auto --git'                # 詳細資訊 + Git 狀態
+  alias la='eza -la --icons=auto --git'               # 包含隱藏檔 (Hidden Files)
+  alias lt='eza --tree --level=2 --icons=auto'        # 2 層樹狀結構
+  alias lta='eza --tree --level=2 --icons=auto -a'    # 包含隱藏檔的樹狀結構
+fi
+
+# 2. bat (取代 cat)
+if command -v bat &> /dev/null; then
+  alias cat='bat --style=plain'                       # 純顯示無框線，適合複製
+  alias preview='bat'                                 # 保持行號、語法高亮與 Git 修改標記
+fi
+
+# 3. bottom (取代 top / htop)
+if command -v btm &> /dev/null; then
+  alias top='btm'
+  alias htop='btm'
+fi
+
+# 4. dust (硬碟空間分析)
+if command -v dust &> /dev/null; then
+  alias du='dust'
+fi
+
+# 5. ripgrep & fd 常用捷徑
+if command -v rg &> /dev/null; then
+  alias rga='rg --hidden --no-ignore'                 # 強制搜尋包含 .gitignore 與隱藏檔
+fi
+
+if command -v fd &> /dev/null; then
+  alias fda='fd --hidden --no-ignore'                 # 強制搜尋所有檔案（包含隱藏與被忽略的）
+fi
+
+# 6. zoxide (目錄智慧跳轉)
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd='z'                                        # （可選）將 cd 直接接管為 zoxide
+fi
+
+# 7. fzf (模糊搜尋)
+if command -v fzf &> /dev/null; then
+  eval "$(fzf --zsh)"
+
+  # 搭配 fd 與 bat 的進階搜尋預覽設定
+  export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
+
+  export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+  export FZF_ALT_C_OPTS="--preview 'eza --tree --level=2 --icons=auto {}'"
+fi
+
+
+
+# 1. 啟用預覽視窗位置與尺寸 (顯示於右側，佔比 50%)
+zstyle ':fzf-tab:*' fzf-flags '--preview-window=right:50%:wrap'
+
+# 2. 針對「cd」指令：專用目錄樹狀結構預覽
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons=auto $word'
+
+# 3. 萬用檔案/目錄補全預覽 (適用於 ls, vim, cat, code 等所有指令)
+# 邏輯：如果是目錄就用 eza 預覽，如果是檔案就用 bat 顯示內容與語法高亮
+zstyle ':fzf-tab:complete:*:*' fzf-preview \
+  'if [ -d $word ]; then \
+     eza -1 --color=always --icons=auto $word; \
+   elif [ -f $word ]; then \
+     bat --color=always --line-range :500 $word; \
+   fi'
