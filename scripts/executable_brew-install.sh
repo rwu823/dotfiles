@@ -5,7 +5,8 @@ brew update;
 brew install \
     tig \
     chezmoi \
-    fzf
+    fzf \
+    eza bat ripgrep fd git-delta dust bottom hyperfine zoxide
 
 
 brew install --cask \
