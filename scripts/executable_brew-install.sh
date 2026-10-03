@@ -4,7 +4,8 @@ brew update;
 
 brew install \
     tig \
-    chezmoi
+    chezmoi \
+    fzf
 
 
 brew install --cask \
