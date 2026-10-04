@@ -1,0 +1,103 @@
+# ==============================================================================
+# 🎨 1. 字型與符號設定 (Fonts & Symbols)
+# ==============================================================================
+# 主要字型 (建議使用原生高品質等寬字型)
+font-family = "JetBrains Mono"
+
+# 備用圖示字型 (補足 Nerd Fonts / Git / Devicon 符號)
+font-family = "Symbols Nerd Font Mono"
+
+# 字型大小 (pt)
+font-size = 14
+
+# 增強文字渲染清晰度 (適合 Retina 螢幕)
+font-thicken = true
+
+# 行高與字元間距微調 (預設為 0)
+# line-height = 2
+# adjust-cell-width = 0%
+
+
+# ==============================================================================
+# 🎭 2. 外觀與主題設定 (Theme & Window Styling)
+# ==============================================================================
+# 終端機主題 (可執行 `ghostty +list-themes` 檢視所有內建主題)
+theme = xterm-256color
+
+# 跟隨 macOS 系統的深色/淺色模式自動切換主題
+theme = dark:TokyoNight,light:TokyoNight Day
+
+# 視窗內邊距 (Padding)，讓文字不要緊貼視窗邊緣
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+
+# macOS 標題列風格 (transparent / macos / hidden)
+macos-titlebar-style = transparent
+window-decoration = true
+
+# 不透明度與背景模糊 (0.0 - 1.0)
+background-opacity = 0.95
+background-blur-radius = 20
+
+# 鼠標樣式與閃爍設定 (block / bar / underline)
+cursor-style = block
+cursor-style-blink = false
+
+
+# ==============================================================================
+# 📋 3. 鼠標與選取行為 (Mouse & Selection)
+# ==============================================================================
+# 滑鼠選取文字後，自動複製到系統剪貼簿
+copy-on-select = true
+
+# 鼠標停頓時自動隱藏，打字時不遮擋文字
+mouse-hide-while-typing = true
+
+# 點擊超連結時自動打開瀏覽器
+mouse-shift-capture = false
+
+
+# ==============================================================================
+# ⚡ 4. 效能與系統整合 (Performance & Integration)
+# ==============================================================================
+# 開啟 Shell Integration (自動繼承工作目錄、Prompt 乾淨重繪)
+shell-integration = detect
+
+# 關閉視窗或分頁時的確認提示 (避免誤關執行中的程序)
+confirm-close-surface = true
+
+# macOS 獨佔：確保切換輸入法或按下快捷鍵時反應極速
+macos-option-as-alt = true
+
+
+# ==============================================================================
+# ⌨️ 5. 自訂快捷鍵 (Keybindings)
+# ==============================================================================
+# 覆蓋 Cmd + ,：直接開啟 XDG 標準設定檔，避開 macOS 沙盒預設路徑
+keybind = super+comma=open_config
+
+# 剪貼簿操作
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+
+# 視窗分割 (Splits)
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+w=close_surface
+
+# 分割區塊間快速跳轉 (Cmd + 箭頭)
+keybind = super+left=goto_split:left
+keybind = super+right=goto_split:right
+keybind = super+up=goto_split:top
+keybind = super+down=goto_split:bottom
+
+# 分頁 (Tabs) 管理
+keybind = super+t=new_tab
+keybind = super+shift+[=previous_tab
+keybind = super+shift+]=next_tab
+
+# 字體大小動態縮放
+keybind = super+plus=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+zero=reset_font_size
