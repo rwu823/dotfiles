@@ -3,9 +3,12 @@
   name = Rocky Wu
 [alias]
   st = status
+  co = checkout
+  coo = "!f(){ git checkout origin/$1; };f"
   pu = push
   puo = push origin
   cm = commit -m
+  sh = stash
 [core]
   pager = delta
 [interactive]
