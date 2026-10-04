@@ -6,8 +6,8 @@ brew install \
     tig \
     chezmoi \
     fzf \
-    eza bat ripgrep fd git-delta dust bottom hyperfine zoxide
-
+    eza bat ripgrep fd git-delta dust bottom hyperfine zoxide \
+    bitwarden-cli
 
 brew install --cask \
     visual-studio-code \

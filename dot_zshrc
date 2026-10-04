@@ -81,7 +81,7 @@ fi
 # 6. zoxide (目錄智慧跳轉)
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
-  alias cd='z'                                        # （可選）將 cd 直接接管為 zoxide
+  alias xd='zoxide'                                        # （可選）將 cd 直接接管為 zoxide
 fi
 
 # 7. fzf (模糊搜尋)
