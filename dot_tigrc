@@ -1,0 +1,72 @@
+# set
+set line-graphics = utf-8
+set show-changes = no
+set refresh-mode = auto
+set refresh-interval = 10
+
+# Views
+set main-view = line-number:no id date:relative-compact author:abbreviated commit-title:graph=v2,refs=yes,overflow=50
+set refs-view = line-number:no id date:relative-compact author ref commit-title
+set log-view	= line-number:no,interval=5 text:yes,commit-title-overflow=2
+
+# Keymap
+
+# bind diff <Space> !git difftool --tool=vimdiff --no-prompt %(commit)^ %(commit) # vimdiff
+bind main	p	none
+bind main	c	none
+bind main	C	none
+bind main	d	none
+bind main	r	none
+bind main	F	none
+bind main	f	none
+
+bind main B :toggle commit-title-refs  # Toggle reference display (tags/branches)
+bind main	cp @?git cherry-pick %(commit)
+bind main	cs @sh -c "echo %(commit) | pbcopy"
+bind main	fr !?sh -c "clear && git fetch -p && git rb %(remote)/%(branch)"
+bind main	FR !sh -c "clear && git fetch -p && git rb %(remote)/HEAD"
+bind main	ri !?git rb -i %(commit)~1
+bind main gg move-first-line
+bind main ee move-last-line
+bind main H :goto HEAD
+bind main CR !?sh -c "git checkout %(commit)~1 && git merge --no-ff %(commit) && git checkout %(remote)/master && git status"
+
+# log
+bind log <Enter> !sh -c "git checkout %(commit)~1 && git merge --no-ff %(commit) && git status"
+
+# diff
+bind diff <Space> @git difftool %(commit)^ %(commit)
+
+# stage
+bind stage <Space> @git difftool --tool=vscode HEAD %(file)
+
+# status
+bind status d @?git checkout -- %(file) # Discard changes
+bind status <Enter> @open %(file)
+bind status a status-update
+bind status A @git add .
+bind status U @git reset HEAD .
+bind status wip @sh -c "git add .; git commit -nm 'wip'"
+
+
+# refs
+bind refs C none
+bind refs c none
+bind refs D none
+
+bind refs P !?sh -c "clear && git push %(remote) %(branch) -f"
+bind refs co @git checkout %(branch)
+bind refs BD !?sh -c "clear && git branch -D %(branch)"
+bind refs CR !?sh -c "git checkout %(remote)/master && git merge --no-ff %(remote)/%(branch) && git checkout %(remote)/master && git status"
+bind refs H :goto HEAD
+
+bind generic g none
+bind generic e none
+bind generic b none
+
+bind generic S !sh -c "clear && git status"
+bind generic b view-refs
+
+# Color
+color cursor white green
+color main-head	black yellow
