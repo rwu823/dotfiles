@@ -16,4 +16,5 @@ brew install --cask \
     kde-connect \
     bettertouchtool \
     raycast \
-    snipaste
+    snipaste \
+    ghostty
