@@ -35,7 +35,7 @@ source <(fzf --zsh)
 
 alias z="source ~/.zshrc"
 alias g=git
-
+alias ch=chezmoi
 
 
 # ==============================================================================
@@ -113,3 +113,5 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview \
    elif [ -f $word ]; then \
      bat --color=always --line-range :500 $word; \
    fi'
+
+export EDITOR="code --wait"
