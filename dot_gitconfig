@@ -5,6 +5,7 @@
   st = status
   pu = push
   puo = push origin
+  cm = commit -m
 [core]
   pager = delta
 [interactive]
