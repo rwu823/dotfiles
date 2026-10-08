@@ -47,7 +47,7 @@
     "BTTTouchBarVisible" : false,
     "BSTDontShowSnapAreasWhileModMoving" : 0,
     "BTTDrawingAreaHeight" : 626,
-    "BTTNumberOfStarts" : 10,
+    "BTTNumberOfStarts" : 17,
     "BTTTouchBarHapticFeedback" : 0,
     "BTTStageManagerLeftSnappingAreaIncreasePercentage" : 0.125,
     "showKeyboardTab" : true,
@@ -143,7 +143,7 @@
     "BTTDrawingsRestoreMousePosition" : true,
     "singleFingerTapRight" : 0.050000000000000003,
     "singleFingerTapLeft" : 0.45000000000000001,
-    "BTTDidRegisterForUpdateStats" : "6.869",
+    "BTTDidRegisterForUpdateStats" : "6.885",
     "BTTHandleThumbsRestingOnTopEdgeAndCorners" : true,
     "BSTBrokenAPICheckEnabled" : false,
     "BTTDrawingsHighlightStartPoint" : true,
@@ -163,7 +163,7 @@
     "BSTSnapAreaDefaultShowPictogram" : false,
     "BSTSnapAreaDefaultPictoDistanceFromBottom" : 0.10000000000000001
   },
-  "BTTPresetUUID" : "38D4CA2B-CADB-4FA0-B0A9-1CA517702BB6",
+  "BTTPresetUUID" : "265FF35B-BAD1-4137-B73E-BCE1DF37B27B",
   "BTTPresetContent" : [
     {
       "BTTAppBundleIdentifier" : "BT.G",
@@ -174,7 +174,7 @@
       },
       "BTTTriggers" : [
         {
-          "BTTLastUpdatedAt" : 1791082974.766422,
+          "BTTLastUpdatedAt" : 1791460942.9860191,
           "BTTTriggerType" : 113,
           "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
@@ -195,7 +195,7 @@
           ]
         },
         {
-          "BTTLastUpdatedAt" : 1791082974.7663879,
+          "BTTLastUpdatedAt" : 1791460942.986026,
           "BTTTriggerType" : 114,
           "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
@@ -219,7 +219,7 @@
           ]
         },
         {
-          "BTTLastUpdatedAt" : 1791082974.7663741,
+          "BTTLastUpdatedAt" : 1791460942.9859638,
           "BTTTriggerType" : 108,
           "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Swipe Up",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
@@ -243,7 +243,7 @@
           ]
         },
         {
-          "BTTLastUpdatedAt" : 1791082972.755024,
+          "BTTLastUpdatedAt" : 1791460942.986011,
           "BTTTriggerType" : 107,
           "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Swipe Down",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
@@ -263,6 +263,25 @@
               },
               "BTTShortcutToSend" : "55,13",
               "BTTOrder" : 1
+            }
+          ]
+        },
+        {
+          "BTTLastUpdatedAt" : 1791460964.077569,
+          "BTTTriggerType" : 132,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (2 Fingers Fix)",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "FE3B738A-1D72-49F3-99A6-4E51D4F14927",
+          "BTTOrder" : 4,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1791460977.425724,
+              "BTTTriggerParentUUID" : "FE3B738A-1D72-49F3-99A6-4E51D4F14927",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "B9C15E83-91AA-497D-8F6B-5EF41E155666",
+              "BTTPredefinedActionType" : 1,
+              "BTTPredefinedActionName" : "Middle Click (At Current Mouse Position)",
+              "BTTOrder" : 2
             }
           ]
         }
